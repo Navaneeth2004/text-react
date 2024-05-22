@@ -1,0 +1,22 @@
+    console.log(arr, " this is arr")
+
+    arr.map(i=>{
+
+      console.log("arr is ",i)
+
+      idlist.map(j=>{
+
+        console.log("if ",i,"==",j);
+
+        if(i==j)
+        {
+          console.log("yes this is equal bitch")
+          const index = arr.indexOf(i);
+          arr.splice(index,1);
+        }
+
+      })
+
+    })
+
+
