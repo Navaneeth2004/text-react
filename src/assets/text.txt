@@ -1,22 +1,12 @@
-    console.log(arr, " this is arr")
-
-    arr.map(i=>{
-
-      console.log("arr is ",i)
-
-      idlist.map(j=>{
-
-        console.log("if ",i,"==",j);
-
-        if(i==j)
+      (async () => {
+        const dataid = await insert("http://localhost:8000/data", newitem, 1);
+        
+        if(newitem.playlist)
         {
-          console.log("yes this is equal bitch")
-          const index = arr.indexOf(i);
-          arr.splice(index,1);
+          await update(`http://localhost:8000/playlist/${realtag.id}`, dataid);
         }
 
-      })
-
-    })
-
+        toast.success("Successfully created a note");
+        navigate("/");
+      })()
 

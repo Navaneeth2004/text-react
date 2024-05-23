@@ -1,8 +1,23 @@
 {
-  "data": [
-
-  ],
+  "data": [],
   "playlist": [
-
+    {
+      "id": "8efc",
+      "title": "playlist1",
+      "color": "red",
+      "items": []
+    },
+    {
+      "id": "4529",
+      "title": "playlist2",
+      "color": "green",
+      "items": []
+    },
+    {
+      "id": "ed67",
+      "title": "playlist3",
+      "color": "yellow",
+      "items": []
+    }
   ]
 }

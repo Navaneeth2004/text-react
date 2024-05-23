@@ -8,7 +8,7 @@ import { insert, getdata, update } from './functions';
 const Create = () => {
   const navigate = useNavigate();
   const [jsondata, setJsondata] = useState([]);
-  const [jsondata1, setJsondata1] = useState([]);
+  const [jsondataid, setjsondataid] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,30 +24,35 @@ const Create = () => {
     event.preventDefault();
 
     const title=event.target.elements.title.value
-    const playlist=event.target.elements.playlist.value
+    const playlist=Array.from(event.target.elements.playlist.options)
+                  .filter(option => option.selected)
+                  .map(option => option.value)
     const tag=event.target.elements.tag.value
     const color=event.target.elements.color.value
     const des=event.target.elements.des.value
-    let realtag=[]
+    let realtag=0
+    let realplaylist=[]
 
-    if(playlist)
+    if(playlist.length>0)
     {
-      console.log("yess mannnnn this is fire  ")
-      jsondata.forEach(i => {
+      realtag=1
+      jsondata.map(i=>{
 
-        if(playlist==i.title)
+        if(playlist.includes(i.title))
         {
-          realtag={id:i.id,value:playlist};
+          realplaylist.push(i.id);
         }
-  
-      });
+
+      })
     }
 
-    console.log(realtag)
+    console.log("this is palylist2222222", realplaylist)
+
+    console.log(realtag, "this is realtag")
     const newitem = {
       title:title,
       tag:tag,
-      playlist:[realtag.id]==null?[realtag.id]:[],
+      playlist:realtag?realplaylist:[],
       color:color.toLowerCase(),
       des:des
     }
@@ -61,11 +66,13 @@ const Create = () => {
     else 
     {
       (async () => {
+        
         const dataid = await insert("http://localhost:8000/data", newitem, 1);
         
-        if(newitem.playlist)
+        if(realtag==1) 
         {
-          await update(`http://localhost:8000/playlist/${realtag.id}`, dataid);
+          newitem.playlist.map(async i=>await update(`http://localhost:8000/playlist/${i}`, dataid))
+          
         }
 
         toast.success("Successfully created a note");
@@ -80,15 +87,8 @@ return (
     <form className='flex-col mt-5 ml-5 mr-5 text-center' onSubmit={actionhandle}>
         <input className='w-full border-2 border-solid border-black pb-2' placeholder='Title' name='title'></input>
         <div className='flex'>
-          <select className='border-2 border-solid border-black pb-2 my-5 mr-5 w-full' name='playlist'>
-            <option>None</option>
-          {
-            jsondata.map((item,key)=>(
-            <option key={key}>{item.title}</option>
-            ))    
-          }
-          </select>
-          <select className='border-2 border-solid border-black pb-2 my-5 w-full' name='color'>
+          <input className='w-full border-2 border-solid border-black pb-2 mt-5 mr-5' placeholder='Tag' name='tag'></input>
+          <select className='border-2 border-solid border-black pb-2 mt-5 w-full' name='color'>
             <option>Red</option>
             <option>Green</option>
             <option>Yellow</option>
@@ -102,7 +102,13 @@ return (
             <option>Purple</option>
           </select>
         </div>
-        <input className='w-full border-2 border-solid border-black pb-2 mb-5' placeholder='Tag' name='tag'></input>
+        <select multiple className='border-2 border-solid border-black pb-8 my-5 mr-5 w-full' name='playlist'>
+          {
+            jsondata.map((item,key)=>(
+            <option key={key}>{item.title}</option>
+            ))    
+          }
+          </select>
         <textarea placeholder='Description' name='des' className='w-full border-2 border-solid border-black pb-80'></textarea>
         <button className='mb-5 border-2 border-solid border-black mt-5 p-1 bg-yellow-300 hover:bg-yellow-400' type='submit'>Create</button>
     </form>   
