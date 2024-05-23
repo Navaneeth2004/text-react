@@ -10,7 +10,7 @@ const Homepage = () => {
 
     useEffect(() => {
       const fetchData = async () => {
-          const data = await getdata("http://localhost:8000/data?_limit=10");
+          const data = await getdata("https://textjsonserver.onrender.com/data?_limit=10");
    
           setJsondata(data);
       }

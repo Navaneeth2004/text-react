@@ -14,8 +14,8 @@ const Createplay = () => {
       
       async function gotdata() 
       {
-          const data = await getdata("http://localhost:8000/playlist");
-          const data1 = await getdata("http://localhost:8000/data");
+          const data = await getdata("https://textjsonserver.onrender.com/playlist");
+          const data1 = await getdata("https://textjsonserver.onrender.com/data");
           setjsonplaydata(data); 
           setjsondata(data1); 
       }
@@ -76,12 +76,12 @@ const Createplay = () => {
 
           async function get() 
           {
-            const playid = await insert("http://localhost:8000/playlist",newitem,1);
+            const playid = await insert("https://textjsonserver.onrender.com/playlist",newitem,1);
 
             console.log(playid, " this is a playlistid just created")
 
             realitem.map((itema)=>{ 
-              updatenote(`http://localhost:8000/data/${itema}`,playid,2)
+              updatenote(`https://textjsonserver.onrender.com/data/${itema}`,playid,2)
             })
 
   

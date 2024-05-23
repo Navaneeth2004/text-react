@@ -24,8 +24,8 @@ const Editplaylist = () => {
         const removelist=[];
         let newar;
 
-        const data = await getdata(`http://localhost:8000/playlist/${id}`);
-        const data1 = await getdata("http://localhost:8000/data");
+        const data = await getdata(`https://textjsonserver.onrender.com/playlist/${id}`);
+        const data1 = await getdata("https://textjsonserver.onrender.com/data");
         setjsondata(data1); 
         setdataofmain(data);
         setjsontitle(data);

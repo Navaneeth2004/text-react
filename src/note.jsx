@@ -9,7 +9,7 @@ const Note = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const data = await getdata(`http://localhost:8000/data/${param.id}`);
+        const data = await getdata(`https://textjsonserver.onrender.com/data/${param.id}`);
         console.log(data);
         setJsondata([data]);
     }

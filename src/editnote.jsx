@@ -15,8 +15,8 @@ const Editnote = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getdata(`http://localhost:8000/data/${id}`);
-      const data1 = await getdata(`http://localhost:8000/playlist`);
+      const data = await getdata(`https://textjsonserver.onrender.com/data/${id}`);
+      const data1 = await getdata(`https://textjsonserver.onrender.com/playlist`);
   
       setJsondata(data);
       setjsonplaydata(data1);
@@ -45,7 +45,7 @@ const Editnote = () => {
 
       console.log("u pressed update ", newitem)
   
-      updatenote(`http://localhost:8000/data/${id}`,newitem,1);
+      updatenote(`https://textjsonserver.onrender.com/data/${id}`,newitem,1);
   
       navigate("/");
   

@@ -13,7 +13,7 @@ const All = () => {
 
     useEffect(() => {
       const fetchData = async () => {
-          const data = await getdata("http://localhost:8000/data");
+          const data = await getdata("https://textjsonserver.onrender.com/data");
    
           setJsondata(data);
 

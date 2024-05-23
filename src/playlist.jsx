@@ -12,10 +12,10 @@ const Playlist = () => {
       
         async function gotdata() 
         {
-            const data = await getdata("http://localhost:8000/playlist");
+            const data = await getdata("https://textjsonserver.onrender.com/playlist");
             setjsonplaylist(data);
 
-            const data1 = await getdata("http://localhost:8000/data");
+            const data1 = await getdata("https://textjsonserver.onrender.com/data");
             setjsondata(data1);
 
             

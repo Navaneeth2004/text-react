@@ -18,8 +18,8 @@ const Playlistitems = () => {
   useEffect(() => {
     const fetchData = async () => {
         let dataitem = []
-        const data = await getdata("http://localhost:8000/data");
-        const data1 = await getdata(`http://localhost:8000/playlist/${id}`);
+        const data = await getdata("https://textjsonserver.onrender.com/data");
+        const data1 = await getdata(`https://textjsonserver.onrender.com/playlist/${id}`);
  
         setJsondata(data);
         setjsoncolor(data1.color);

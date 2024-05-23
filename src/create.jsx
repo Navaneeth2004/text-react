@@ -12,7 +12,7 @@ const Create = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const data = await getdata("http://localhost:8000/playlist");
+        const data = await getdata("https://textjsonserver.onrender.com/playlist");
  
         setJsondata(data);
     }
@@ -46,8 +46,6 @@ const Create = () => {
       })
     }
 
-    console.log("this is palylist2222222", realplaylist)
-
     console.log(realtag, "this is realtag")
     const newitem = {
       title:title,
@@ -67,11 +65,11 @@ const Create = () => {
     {
       (async () => {
         
-        const dataid = await insert("http://localhost:8000/data", newitem, 1);
+        const dataid = await insert("https://textjsonserver.onrender.com/data", newitem, 1);
         
         if(realtag==1) 
         {
-          newitem.playlist.map(async i=>await update(`http://localhost:8000/playlist/${i}`, dataid))
+          newitem.playlist.map(async i=>await update(`https://textjsonserver.onrender.com/playlist/${i}`, dataid))
           
         }
 

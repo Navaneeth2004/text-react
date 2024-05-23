@@ -18,13 +18,13 @@ async function insert(address,insertlist,want)
 
 async function deletenote(deletething,deletelist)
 {
-  const response3 = await fetch((`http://localhost:8000/data/${deletething}`),{
+  const response3 = await fetch((`https://textjsonserver.onrender.com/data/${deletething}`),{
     method:"DELETE",
   })
 
   deletelist.map(async item=>{
 
-    const response1 = await fetch(`http://localhost:8000/playlist/${item}`);
+    const response1 = await fetch(`https://textjsonserver.onrender.com/playlist/${item}`);
     const response2 = await response1.json();
 
     let arr = response2.items
@@ -41,7 +41,7 @@ async function deletenote(deletething,deletelist)
         items: arr,
       };
 
-    const response = await fetch((`http://localhost:8000/playlist/${item}`),{
+    const response = await fetch((`https://textjsonserver.onrender.com/playlist/${item}`),{
       method:"PUT",
       body:JSON.stringify(actualdata)
     })
@@ -52,13 +52,13 @@ async function deletenote(deletething,deletelist)
 
 async function deleteplaylist(deletething,deletelist)
 {
-  const response3 = await fetch((`http://localhost:8000/playlist/${deletething}`),{
+  const response3 = await fetch((`https://textjsonserver.onrender.com/playlist/${deletething}`),{
     method:"DELETE",
   })
 
   deletelist.map(async item=>{
 
-    const response1 = await fetch(`http://localhost:8000/data/${item}`);
+    const response1 = await fetch(`https://textjsonserver.onrender.com/data/${item}`);
     const response2 = await response1.json();
 
     let arr = response2.playlist
@@ -77,7 +77,7 @@ async function deleteplaylist(deletething,deletelist)
         des: response2.des,
       };
 
-    const response = await fetch((`http://localhost:8000/data/${item}`),{
+    const response = await fetch((`https://textjsonserver.onrender.com/data/${item}`),{
       method:"PUT",
       body:JSON.stringify(actualdata)
     })
@@ -164,9 +164,9 @@ async function updateplaylist(updatelist,play)
 
     console.log(idlist)
 
-    const response1 = await fetch(`http://localhost:8000/playlist/${updatelist.id}`);
+    const response1 = await fetch(`https://textjsonserver.onrender.com/playlist/${updatelist.id}`);
     const response2 = await response1.json();
-    const response11 = await fetch(`http://localhost:8000/data`);
+    const response11 = await fetch(`https://textjsonserver.onrender.com/data`);
     const response22 = await response11.json();
 
     let arr = response2.items
@@ -188,7 +188,7 @@ async function updateplaylist(updatelist,play)
 
     console.log("this is inserted in playlist ",actualdata);
     
-    const response = await fetch((`http://localhost:8000/playlist/${updatelist.id}`),{
+    const response = await fetch((`https://textjsonserver.onrender.com/playlist/${updatelist.id}`),{
       method:"PUT",
       body:JSON.stringify(actualdata)
     })
@@ -197,7 +197,7 @@ async function updateplaylist(updatelist,play)
 
       if(idlist.includes(i.id))
       {
-        const response111 = await fetch(`http://localhost:8000/data/${i.id}`);
+        const response111 = await fetch(`https://textjsonserver.onrender.com/data/${i.id}`);
         const response222 = await response111.json();
 
         let playlistids = response222.playlist;
@@ -215,7 +215,7 @@ async function updateplaylist(updatelist,play)
 
         console.log(actualdataindata, "this is the actual data to be in data")
 
-        await fetch((`http://localhost:8000/data/${response222.id}`),{
+        await fetch((`https://textjsonserver.onrender.com/data/${response222.id}`),{
           method:"PUT",
           body:JSON.stringify(actualdataindata)
         })
@@ -232,9 +232,9 @@ async function updateplaylist(updatelist,play)
 
     console.log(idlist, " this is idlist")
 
-    const response1 = await fetch(`http://localhost:8000/playlist/${updatelist.id}`);
+    const response1 = await fetch(`https://textjsonserver.onrender.com/playlist/${updatelist.id}`);
     const response2 = await response1.json();
-    const response11 = await fetch(`http://localhost:8000/data`);
+    const response11 = await fetch(`https://textjsonserver.onrender.com/data`);
     const response22 = await response11.json();
 
     let arr = response2.items
@@ -250,7 +250,7 @@ async function updateplaylist(updatelist,play)
      
     console.log("this is inserted in playlist ",actualdata);
 
-    const response = await fetch((`http://localhost:8000/playlist/${updatelist.id}`),{
+    const response = await fetch((`https://textjsonserver.onrender.com/playlist/${updatelist.id}`),{
       method:"PUT",
       body:JSON.stringify(actualdata)
     })
@@ -259,7 +259,7 @@ async function updateplaylist(updatelist,play)
 
       if(idlist.includes(i.id))
       {
-        const response111 = await fetch(`http://localhost:8000/data/${i.id}`);
+        const response111 = await fetch(`https://textjsonserver.onrender.com/data/${i.id}`);
         const response222 = await response111.json();
 
         let playlistids = response222.playlist;
@@ -285,7 +285,7 @@ async function updateplaylist(updatelist,play)
 
         console.log(actualdataindata, "this is the actual data to be in data")
 
-        await fetch((`http://localhost:8000/data/${response222.id}`),{
+        await fetch((`https://textjsonserver.onrender.com/data/${response222.id}`),{
           method:"PUT",
           body:JSON.stringify(actualdataindata)
         })
@@ -298,7 +298,7 @@ async function updateplaylist(updatelist,play)
 
   else if(play==3)
   {
-    await fetch((`http://localhost:8000/playlist/${updatelist.id}`),{
+    await fetch((`https://textjsonserver.onrender.com/playlist/${updatelist.id}`),{
       method:"PUT",
       body:JSON.stringify(updatelist)
     })
