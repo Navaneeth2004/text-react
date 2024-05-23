@@ -15,13 +15,11 @@ const Homepage = () => {
           setJsondata(data);
       }
       fetchData();
-    }, [jsondata]);
+    }, []);
 
   return (
     <>
-        {
-        jsondata.map((item, key)=>
-        (
+      {jsondata.length > 0 && jsondata.map((item, key)=>(
         <button onClick={()=>(navigate(`${item.id}`))} key={key} className='w-screen hover:bg-green-400 flex bg-green-300 pb-3 border-solid border-2 border-gray-500 justify-between'>
             <div className='flex-col ml-2 w-screen'>
                 <p className='text-lg mt-2 text-bold'>{item.title.length>32?item.title.substring(0,32)+"...":item.title}</p>
